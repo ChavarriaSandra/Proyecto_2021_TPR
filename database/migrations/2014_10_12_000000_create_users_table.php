@@ -18,6 +18,10 @@ class CreateUsersTable extends Migration
             $table->string('name');
             $table->string('password');
             $table->rememberToken();
+            $table->unsignedBigInteger('permiso_id')->nullable();
+            $table->foreign('permiso_id')
+            ->references('id')->on('permisos')
+            ->onDelete('set null');
             $table->timestamps();
         });
     }
