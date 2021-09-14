@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreatePersonalAccessTokensTable extends Migration
+class CreatePacientesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class CreatePersonalAccessTokensTable extends Migration
      */
     public function up()
     {
-        Schema::create('personal_access_tokens', function (Blueprint $table) {
+        Schema::create('pacientes', function (Blueprint $table) {
             $table->id();
             $table->string('nombre');
             $table->string('apellido');
@@ -25,6 +25,8 @@ class CreatePersonalAccessTokensTable extends Migration
             $table->string('Ciudad');
             $table->timestamp('last_used_at')->nullable();
             $table->timestamps();
+            $table->unsignedBigInteger('historial__particular_id');
+            $table->foreign('historial__particular_id')->references('id')->on('historial__particulars');
         });
     }
 
@@ -35,6 +37,6 @@ class CreatePersonalAccessTokensTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('personal_access_tokens');
+        Schema::dropIfExists('pacientes');
     }
 }

@@ -21,6 +21,8 @@ class CreateMedicacionDetallesTable extends Migration
             $table->date('duracion');
             $table->time('horario');
             $table->timestamps();
+            $table->unsignedBigInteger('tratamiento_id');
+            $table->foreign('tratamiento_id')->references('id')->on('tratamientos');
         });
     }
 

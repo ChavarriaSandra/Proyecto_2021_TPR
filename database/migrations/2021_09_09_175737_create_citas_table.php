@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreatePermisosTable extends Migration
+class CreateCitasTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,13 @@ class CreatePermisosTable extends Migration
      */
     public function up()
     {
-        Schema::create('permisos', function (Blueprint $table) {
+        Schema::create('citas', function (Blueprint $table) {
             $table->id();
-            $table->mediumText('descripcion');
+            $table->date('fecha_cita');
+            $table->time('hora_cita');
             $table->timestamps();
+            $table->unsignedBigInteger('historia__previa_id');
+            $table->foreign('historia__previa_id')->references('id')->on('historia__previas');
         });
     }
 
@@ -27,6 +30,6 @@ class CreatePermisosTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('permisos');
+        Schema::dropIfExists('citas');
     }
 }

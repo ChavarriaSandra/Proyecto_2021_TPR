@@ -18,6 +18,10 @@ class CreateHistorialMedicosTable extends Migration
             $table->dateTime('Fecha_Registro');
             $table->longText('sintoma');
             $table->timestamps();
+            $table->unsignedBigInteger('empleado_id');
+            $table->foreign('empleado_id')->references('id')->on('empleados');
+            $table->unsignedBigInteger('paciente_id');
+            $table->foreign('paciente_id')->references('id')->on('pacientes');
         });
     }
 

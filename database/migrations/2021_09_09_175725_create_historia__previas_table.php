@@ -17,6 +17,8 @@ class CreateHistoriaPreviasTable extends Migration
             $table->id();
             $table->string('sintomas');
             $table->timestamps();
+            $table->unsignedBigInteger('paciente_id');
+            $table->foreign('paciente_id')->references('id')->on('pacientes');
         });
     }
 
