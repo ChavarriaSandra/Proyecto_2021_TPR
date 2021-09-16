@@ -15,15 +15,18 @@ use App\Http\Controllers\DatosController;
 |
 */
 
-/*Route::get('/', function () {
+Route::get('/', function () {
     return view('welcome');
-    return "Bienvenido a la paniga Principal";
-});
+   
+});/*
 Route::get('datos', function () {
     return "Bienvenido aqui puedes crear un cita";
 });
-*/
+
 Route::get('/',HomeController::class);
 Route::get('datos',[DatosController::class,'index']);
 Route::get('datos/create',[DatosController::class,'create']);
-Route::get('datos/{dato}',[DatosController::class,'show']);
+Route::get('datos/{dato}',[DatosController::class,'show']);*/
+Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
+    return view('dashboard');
+})->name('dashboard');
