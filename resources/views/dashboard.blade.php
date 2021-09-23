@@ -8,7 +8,12 @@
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg">
-                <x-jet-welcome />
+                <ul>
+                    <p> <a href="/user"> Usuarios </a></p>
+                    <p> <a href="/user/create"> Nuevo Usuario</a></p>
+                    <p> <a href="/paciente/"> pacientes </a></p>
+                    <p> <a href="/personal"> personal vigentes </a></p>
+              </ul>
             </div>
         </div>
     </div>

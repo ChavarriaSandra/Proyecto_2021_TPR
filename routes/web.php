@@ -1,8 +1,10 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\HomeController;
-use App\Http\Controllers\DatosController;
+use App\Http\Controllers\UserController;
+use App\Http\Controllers\PacienteController;
+use App\Http\Controllers\PersonalController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -30,3 +32,7 @@ Route::get('datos/{dato}',[DatosController::class,'show']);*/
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return view('dashboard');
 })->name('dashboard');
+
+Route::resource('user',UserController::class);
+Route::resource('paciente',PacienteController::class);
+Route::resource('personal',PersonalController::class);
