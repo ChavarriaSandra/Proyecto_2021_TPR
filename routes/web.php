@@ -4,6 +4,11 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\PacienteController;
 use App\Http\Controllers\PersonalController;
+use App\Http\Controllers\CargoController;
+use App\Http\Controllers\Historial_ParticularController;
+use App\Http\Controllers\Historia_PreviaController;
+use App\Http\Controllers\CitaController;
+use App\Http\Controllers\AgendaController;
 
 
 /*
@@ -36,3 +41,9 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
 Route::resource('user',UserController::class);
 Route::resource('paciente',PacienteController::class);
 Route::resource('personal',PersonalController::class);
+Route::resource('paciente',PacienteController::class);
+Route::resource('cargo',CargoController::class);
+Route::resource('historial_particular',Historial_ParticularController::class);
+Route::resource('historia_previa',Historia_PreviaController::class);
+Route::resource('cita',CitaController::class);
+Route::resource('agenda',AgendaController::class);

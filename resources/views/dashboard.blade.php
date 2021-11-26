@@ -11,8 +11,13 @@
                 <ul>
                     <p> <a href="/user"> Usuarios </a></p>
                     <p> <a href="/user/create"> Nuevo Usuario</a></p>
-                    <p> <a href="/paciente/"> pacientes </a></p>
-                    <p> <a href="/personal"> personal vigentes </a></p>
+                    <p> <a href="/personal"> Personal vigentes </a></p>
+                    <p> <a href="/paciente/"> Pacientes </a></p>
+                    <p> <a href="/cita"> Cita </a></p>
+                    <p> <a href="/agenda"> Agenda </a></p>
+                    <p> <a href="/cargo"> Cargo </a></p>
+                    <p> <a href="/historia_previa"> Historia Previa </a></p>
+                    <p> <a href="/historial_particular"> Historial Particular </a></p>
               </ul>
             </div>
         </div>

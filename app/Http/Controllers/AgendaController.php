@@ -1,20 +1,20 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\Models\Paciente;
+use App\Models\Agenda;
 use Illuminate\Http\Request;
 
-class PacienteController extends Controller
+class AgendaController extends Controller
 {
-    /**
+     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
     public function index()
     {
-        $paciente = Paciente::paginate();
-        return view('paciente.index', compact('paciente'));
+        $agenda = Agenda::paginate();
+        return view('agenda.index', compact('agenda'));
     }
 
     /**
@@ -24,7 +24,7 @@ class PacienteController extends Controller
      */
     public function create()
     {
-        return view('paciente.create');
+        return view('agenda.create');
     }
 
     /**
@@ -36,27 +36,13 @@ class PacienteController extends Controller
     public function store(Request $request)
     {
         $validatedData = $request->validate([
-            'nombre'=>'not required',
-            'apellido'=>'not required',
-            'edad'=>'not required',
-            'genero'=>'not required',
-            'telefono'=>'not required',
-            'calle'=>'not required',
-            'barrio'=>'not required',
-            'ciudad'=>'not required'
+            'estado'=>'required'
             ]);
-        $paciente = new Paciente(); 
-        $paciente->nombre = $request->input('nombre');
-        $paciente->apellido = $request->input('apellido');
-        $paciente->edad = $request->input('edad');
-        $paciente->genero = $request->input('genero');
-        $paciente->telefono = $request->input('telefono');
-        $paciente->calle= $request->input('calle');
-        $paciente->barrio = $request->input('barrio');
-        $paciente->ciudad = $request->input('ciudad');
-        $paciente->save();
-        $paciente= Paciente::All();
-        return view('paciente.index', compact('paciente')); 
+        $agenda = new Agenda(); 
+        $agenda->estado= $request->input('estado');
+        $agenda->save();
+        $agenda= Agenda::All();
+        return view('agenda.index', compact('agenda')); 
     }
 
     /**
@@ -67,8 +53,8 @@ class PacienteController extends Controller
      */
     public function show($id)
     {
-        $paciente= Paciente::find($id);
-        return view('paciente.show', compact('paciente'));
+        $agenda= Agenda::find($id);
+        return view('agenda.show', compact('agenda'));
     }
 
     /**

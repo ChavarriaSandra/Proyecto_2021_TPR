@@ -1,20 +1,20 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\Models\Paciente;
+use App\Models\Historial_Particular;
 use Illuminate\Http\Request;
 
-class PacienteController extends Controller
+class Historial_ParticularController extends Controller
 {
-    /**
+     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
     public function index()
     {
-        $paciente = Paciente::paginate();
-        return view('paciente.index', compact('paciente'));
+        $historial_particular = Historial_Particular::paginate();
+        return view('historial_particular.index', compact('historial_particular'));
     }
 
     /**
@@ -24,7 +24,7 @@ class PacienteController extends Controller
      */
     public function create()
     {
-        return view('paciente.create');
+        return view('historia_previa.create');
     }
 
     /**
@@ -35,29 +35,18 @@ class PacienteController extends Controller
      */
     public function store(Request $request)
     {
-        $validatedData = $request->validate([
-            'nombre'=>'not required',
-            'apellido'=>'not required',
-            'edad'=>'not required',
-            'genero'=>'not required',
-            'telefono'=>'not required',
-            'calle'=>'not required',
-            'barrio'=>'not required',
-            'ciudad'=>'not required'
-            ]);
-        $paciente = new Paciente(); 
-        $paciente->nombre = $request->input('nombre');
-        $paciente->apellido = $request->input('apellido');
-        $paciente->edad = $request->input('edad');
-        $paciente->genero = $request->input('genero');
-        $paciente->telefono = $request->input('telefono');
-        $paciente->calle= $request->input('calle');
-        $paciente->barrio = $request->input('barrio');
-        $paciente->ciudad = $request->input('ciudad');
-        $paciente->save();
-        $paciente= Paciente::All();
-        return view('paciente.index', compact('paciente')); 
+            $validatedData = $request->validate([
+                'alergia'=>'not required',
+                'tipo_sangre'=>'not required'
+                ]);
+            $historial_particular= new  Historial_particular(); 
+            $historial_particular->alergia = $request->input('alergia');
+            $historial_particular->tipo_sangre = $request->input('tipo_sangre');
+            $historial_particular->save();
+            $historial_particular=  Historial_particular::All();
+            return view('historial_particular.index', compact('historial_particular')); 
     }
+
 
     /**
      * Display the specified resource.
@@ -67,8 +56,8 @@ class PacienteController extends Controller
      */
     public function show($id)
     {
-        $paciente= Paciente::find($id);
-        return view('paciente.show', compact('paciente'));
+        $historial_particular= Historial_particular::find($id);
+        return view('historial_particular.show', compact('historial_particular'));
     }
 
     /**

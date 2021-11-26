@@ -30,13 +30,10 @@
 			<input type="text" name="email" class="form-control">
 		</div>
 		<div class="form-group">
-			<label for=""> Foto del docente</label>
+			<label for=""> Foto</label>
 			<input type="file" accept = "jpg, png, gif, jpeg" name="avatar">
 		</div>
-		
-
 		<button type="submit" class="btn btn-primary">Guardar Usuario</button>
 		
-	</form>
-
+	</form>	
 @endsection

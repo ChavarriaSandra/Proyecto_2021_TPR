@@ -1,20 +1,20 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\Models\Paciente;
+use App\Models\Cargo;
 use Illuminate\Http\Request;
 
-class PacienteController extends Controller
+class CargoController extends Controller
 {
-    /**
+     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
     public function index()
     {
-        $paciente = Paciente::paginate();
-        return view('paciente.index', compact('paciente'));
+        $cargo = Cargo::paginate();
+        return view('cargo.index', compact('cargo'));
     }
 
     /**
@@ -24,7 +24,7 @@ class PacienteController extends Controller
      */
     public function create()
     {
-        return view('paciente.create');
+        return view('cargo.create');
     }
 
     /**
@@ -36,27 +36,13 @@ class PacienteController extends Controller
     public function store(Request $request)
     {
         $validatedData = $request->validate([
-            'nombre'=>'not required',
-            'apellido'=>'not required',
-            'edad'=>'not required',
-            'genero'=>'not required',
-            'telefono'=>'not required',
-            'calle'=>'not required',
-            'barrio'=>'not required',
-            'ciudad'=>'not required'
+            'cargo'=>'required'
             ]);
-        $paciente = new Paciente(); 
-        $paciente->nombre = $request->input('nombre');
-        $paciente->apellido = $request->input('apellido');
-        $paciente->edad = $request->input('edad');
-        $paciente->genero = $request->input('genero');
-        $paciente->telefono = $request->input('telefono');
-        $paciente->calle= $request->input('calle');
-        $paciente->barrio = $request->input('barrio');
-        $paciente->ciudad = $request->input('ciudad');
-        $paciente->save();
-        $paciente= Paciente::All();
-        return view('paciente.index', compact('paciente')); 
+        $cargo = new Cargo(); 
+        $cargo->cargo= $request->input('cargo');
+        $cargo->save();
+        $cargo= Cargo::All();
+        return view('cargo.index', compact('cargo')); 
     }
 
     /**
@@ -67,8 +53,8 @@ class PacienteController extends Controller
      */
     public function show($id)
     {
-        $paciente= Paciente::find($id);
-        return view('paciente.show', compact('paciente'));
+        $cargo = Cargo::find($id);
+        return view('cargo.show', compact('cargo'));
     }
 
     /**

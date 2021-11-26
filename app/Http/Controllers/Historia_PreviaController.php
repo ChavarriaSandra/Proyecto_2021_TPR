@@ -1,20 +1,20 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\Models\Paciente;
+use App\Models\Historia_Previa;
 use Illuminate\Http\Request;
 
-class PacienteController extends Controller
+class Historia_PreviaController extends Controller
 {
-    /**
+     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
     public function index()
     {
-        $paciente = Paciente::paginate();
-        return view('paciente.index', compact('paciente'));
+        $historia_previa = Historia_Previa::paginate();
+        return view('historia_previa.index', compact('historia_previa'));
     }
 
     /**
@@ -24,7 +24,7 @@ class PacienteController extends Controller
      */
     public function create()
     {
-        return view('paciente.create');
+        return view('historia_previa.create');
     }
 
     /**
@@ -35,29 +35,16 @@ class PacienteController extends Controller
      */
     public function store(Request $request)
     {
-        $validatedData = $request->validate([
-            'nombre'=>'not required',
-            'apellido'=>'not required',
-            'edad'=>'not required',
-            'genero'=>'not required',
-            'telefono'=>'not required',
-            'calle'=>'not required',
-            'barrio'=>'not required',
-            'ciudad'=>'not required'
-            ]);
-        $paciente = new Paciente(); 
-        $paciente->nombre = $request->input('nombre');
-        $paciente->apellido = $request->input('apellido');
-        $paciente->edad = $request->input('edad');
-        $paciente->genero = $request->input('genero');
-        $paciente->telefono = $request->input('telefono');
-        $paciente->calle= $request->input('calle');
-        $paciente->barrio = $request->input('barrio');
-        $paciente->ciudad = $request->input('ciudad');
-        $paciente->save();
-        $paciente= Paciente::All();
-        return view('paciente.index', compact('paciente')); 
+            $validatedData = $request->validate([
+                'sintomas'=>'required',
+                ]);
+            $historia_previa = new Historia_Previa(); 
+            $historia_previa->sintomas = $request->input('sintomas');
+            $historia_previa->save();
+            $historia_previa= Historia_Previa::All();
+            return view('historia_previa.index', compact('historia_previa')); 
     }
+
 
     /**
      * Display the specified resource.
@@ -67,8 +54,8 @@ class PacienteController extends Controller
      */
     public function show($id)
     {
-        $paciente= Paciente::find($id);
-        return view('paciente.show', compact('paciente'));
+        $historia_previa = Historia_Previa::find($id);
+        return view('historia_previa.show', compact('historia_previa'));
     }
 
     /**
